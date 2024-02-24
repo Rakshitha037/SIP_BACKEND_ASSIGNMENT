@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Rakshitha037/SIP_BACKEND_ASSIGNMENT-1#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.2.0"
   }
+
 }

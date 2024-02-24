@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const Blog = require('../model/Blog');
 // Sample data for demonstration
 let blogs = [
     { id: 1, authorId: 1, title: 'First Blog', content: 'This is the content of the first blog' },
@@ -27,5 +27,15 @@ router.get('/:authorId', (req, res) => {
     const authorBlogs = blogs.filter(blog => blog.authorId === authorId);
     res.status(200).json({ message: 'Success', blogs: authorBlogs });
 });
+
+router.get('/category', async (req, res) => {
+    try {
+      const { category } = req.query;
+      const blogs = await Blog.find({ category });
+      res.json(blogs);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 
 module.exports = router;
